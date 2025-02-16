@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Rows:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Rows_jar</output-path>
+    <root id="archive" name="Rows.jar">
+      <element id="module-output" name="Rows" />
+    </root>
+  </artifact>
+</component>
