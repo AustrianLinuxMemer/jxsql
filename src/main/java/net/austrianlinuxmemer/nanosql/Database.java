@@ -2,7 +2,7 @@ package net.austrianlinuxmemer.nanosql;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
-
+//
 public interface Database extends AutoCloseable {
     SQLFormatter DefaultSQLFormatter = (o, f) -> switch (o) {
         case null -> "NULL";
