@@ -1,4 +1,8 @@
-package net.austrianlinuxmemer.nanosql;
+package net.austrianlinuxmemer.jxsql.database;
+
+import net.austrianlinuxmemer.jxsql.result.Result;
+import net.austrianlinuxmemer.jxsql.result.Row;
+import net.austrianlinuxmemer.jxsql.statements.Statement;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

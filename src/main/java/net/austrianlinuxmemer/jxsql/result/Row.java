@@ -1,4 +1,6 @@
-package net.austrianlinuxmemer.nanosql;
+package net.austrianlinuxmemer.jxsql.result;
+
+import net.austrianlinuxmemer.jxsql.parser.FieldParser;
 
 import java.util.function.Function;
 

@@ -1,4 +1,6 @@
-package net.austrianlinuxmemer.nanosql;
+package net.austrianlinuxmemer.jxsql.statements;
+
+import net.austrianlinuxmemer.jxsql.formatters.SQLFormatter;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -35,7 +37,7 @@ public class ParameterizedStatement implements Statement {
         Arrays.stream(codepoints).forEach(codepoint -> {
             String c = Character.toString(codepoint);
             if (c.equals("?")) {
-                characters.append(sqlFormatter.parse(objects.pop(), sqlFormatter));
+                characters.append(sqlFormatter.format(objects.pop(), sqlFormatter));
             } else {
                 characters.append(c);
             }

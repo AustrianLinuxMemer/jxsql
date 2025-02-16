@@ -1,4 +1,7 @@
-package net.austrianlinuxmemer.nanosql;
+package net.austrianlinuxmemer.jxsql.statements;
+
+import net.austrianlinuxmemer.jxsql.formatters.SQLFormatter;
+import net.austrianlinuxmemer.jxsql.result.Row;
 
 public class ParameterizedInsertionStatement implements Statement {
     private final String preparedStatement;
@@ -38,7 +41,7 @@ public class ParameterizedInsertionStatement implements Statement {
         Object[] args = row.data();
         StringBuilder builder = new StringBuilder("(");
         for (int i = 0; i < args.length; i++) {
-            builder.append(sqlFormatter.parse(args[i], sqlFormatter));
+            builder.append(sqlFormatter.format(args[i], sqlFormatter));
             if (i < args.length - 1) {
                 builder.append(", ");
             } else {

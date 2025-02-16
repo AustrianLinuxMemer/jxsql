@@ -1,6 +1,4 @@
-package net.austrianlinuxmemer.nanosql;
-
-import java.util.stream.Collectors;
+package net.austrianlinuxmemer.jxsql.statements;
 
 public interface Statement {
 

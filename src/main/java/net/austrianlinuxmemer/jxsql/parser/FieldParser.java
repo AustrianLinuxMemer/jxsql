@@ -1,4 +1,4 @@
-package net.austrianlinuxmemer.nanosql;
+package net.austrianlinuxmemer.jxsql.parser;
 
 @FunctionalInterface
 public interface FieldParser<T> {

@@ -1,4 +1,4 @@
-package net.austrianlinuxmemer.nanosql;
+package net.austrianlinuxmemer.jxsql.database;
 
 public class DatabaseException extends RuntimeException {
     public DatabaseException(String message, Throwable cause) {
