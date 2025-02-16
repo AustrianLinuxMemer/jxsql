@@ -1,6 +1,7 @@
 package net.austrianlinuxmemer.jxsql.result;
 
 import net.austrianlinuxmemer.jxsql.parser.FieldParser;
+import net.austrianlinuxmemer.jxsql.parser.ObjectParser;
 
 import java.util.function.Function;
 
@@ -32,8 +33,8 @@ public record Row(Object... data) {
     public <T> T getObject(int col, FieldParser<T> converter) {
         return converter.parse(data[col]);
     }
-    public <T> T parseObject(Function<Object[], T> converter) {
-        return converter.apply(data);
+    public <T> T parseObject(ObjectParser<T> converter) {
+        return converter.parse(data);
     }
     public int size() {
         return data.length;

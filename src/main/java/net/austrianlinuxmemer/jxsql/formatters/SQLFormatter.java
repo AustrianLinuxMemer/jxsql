@@ -29,10 +29,7 @@ public interface SQLFormatter {
         return "'" + s.codePoints().mapToObj(Character::toString).map(c -> c.equals("'") ? "''" : c).collect(Collectors.joining()) + "'";
     }
     static String parseCollection(Collection<?> collection, SQLFormatter formatter) {
-        StringBuilder builder = new StringBuilder();
-        collection.forEach(c -> builder.append(formatter.format(c, formatter)).append(","));
-        builder.delete(builder.length()-1, builder.length());
-        return builder.toString();
+        return collection.stream().map(o -> formatter.format(o, formatter)).collect(Collectors.joining(","));
     }
     static String parseArray(Object[] array, SQLFormatter formatter) {
         return Arrays.stream(array).map(o -> formatter.format(o, formatter)).collect(Collectors.joining(","));
