@@ -5,7 +5,7 @@ public class ParameterizedInsertionStatement implements Statement {
     private ParameterizedInsertionStatement(String preparedStatement) {
         this.preparedStatement = preparedStatement;
     }
-    public static ParameterizedInsertionStatement prepare(String statement, SQLFormatter sqlFormatter, Object[]... rows) {
+    public static ParameterizedInsertionStatement prepare(String statement, SQLFormatter sqlFormatter, Row... rows) {
         if (rows == null) {
             throw new IllegalArgumentException("the array of rows cannot be null");
         }
@@ -16,8 +16,8 @@ public class ParameterizedInsertionStatement implements Statement {
             throw new IllegalArgumentException(String.format("Statement %s is not an insert statement to be expanded", statement));
         }
         for (int i = 1; i < rows.length; i++) {
-            int current = rows[i-1].length;
-            int next = rows[i].length;
+            int current = rows[i-1].data().length;
+            int next = rows[i].data().length;
             if (current != next) throw new IllegalArgumentException("All rows must be of the same length");
         }
         StringBuilder rowBuilder = new StringBuilder();
@@ -34,7 +34,8 @@ public class ParameterizedInsertionStatement implements Statement {
         }
         return new ParameterizedInsertionStatement(rowBuilder.toString());
     }
-    private static String rowBuilder(Object[] args, SQLFormatter sqlFormatter) {
+    private static String rowBuilder(Row row, SQLFormatter sqlFormatter) {
+        Object[] args = row.data();
         StringBuilder builder = new StringBuilder("(");
         for (int i = 0; i < args.length; i++) {
             builder.append(sqlFormatter.parse(args[i], sqlFormatter));

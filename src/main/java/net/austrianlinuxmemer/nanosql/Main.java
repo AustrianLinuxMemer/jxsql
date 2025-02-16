@@ -11,10 +11,10 @@ public class Main {
             Database database = new JDBCDatabase(connection);
             Statement statement = Statement.prepare("CREATE TABLE myTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, active BOOLEAN);");
             database.execute(statement);
-            Object[][] data = {
-                    {"leo", "email1", true},
-                    {"füreder", "email2", false},
-                    {"hallo", "email3", false}
+            Row[] data = {
+                    new Row("leo", "email1", true),
+                    new Row("füreder", "email2", false),
+                    new Row("hallo", "email3", false)
             };
             Statement insert = ParameterizedInsertionStatement.prepare("INSERT INTO myTable (name, email, active) VALUES", Database.DefaultSQLFormatter, data);
             Result result = database.execute(insert);
